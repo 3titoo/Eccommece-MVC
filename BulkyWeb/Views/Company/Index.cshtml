@@ -1,0 +1,80 @@
+﻿@model IEnumerable<BulkyWeb.Models.Company>
+
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-0">
+        <h2 class="text-white py-2">Company List</h2>
+    </div>
+
+    <div class="card-body p-4">
+        <div class="row pb-3">
+            <div class="col-6">
+            </div>
+
+            <div class="col-6 text-end">
+                <a asp-controller="Company" asp-action="Create" class="btn btn-primary">
+                    <i class="bi bi-plus-circle"></i> Create New Company
+                </a>
+            </div>
+
+        </div>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>
+                    Company Name
+                </th>
+                <th>
+                    Street Address
+                </th>
+                <th>
+                    City
+                </th>
+                <th>
+                    State
+                </th>
+                <th>
+                    Postal Code
+                </th>
+                <th>
+                    Phone Number
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>
+                        @item.Name
+                    </th>
+                    <th>
+                        @item.StreetAddress
+                    </th>
+                    <th>
+                        @item.City
+                    </th>
+                    <th>
+                        @item.State
+                    </th>
+                    <th>
+                        @item.PostalCode
+                    </th>
+                    <th>
+                        @item.PhoneNumber
+                    </th>
+                    <td>
+                        <div class="w-75 btn-group">
+                            <a asp-controller="Company" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary mx-2">
+                                <i class="bi bi-pencil"></i> Edit
+                            </a>
+                            <a asp-controller="Company" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger ">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>
